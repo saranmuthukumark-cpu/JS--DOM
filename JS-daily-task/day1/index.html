@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM | Greeting</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="bg-gray-300">
+    <nav class="bg-green-300 text-center py-5">
+      <h1 class="text-3xl">Greeting Bot 👋</h1>
+    </nav>
+    <main class="flex justify-center mt-10 mx-auto">
+      
+      <div class=" flex flex-col">
+        <div>
+          <form action="" class="">
+            <input
+              type="text"
+              placeholder="Enter your Name"
+              class="border border-green-400 outline-none rounded-sm py-1 bg-white placeholder:text-gray-700 pl-2"
+              id="input-name"
+              required />
+            <input
+              type="submit"
+              class="border bg-green-400 rounded-sm border-green-600 px-1 py-1 outline-none"
+              id="submit" />
+          </form>
+        </div>
+        <div id="result" class="  "></div>
+      </div>
+    </main>
+
+    <script>
+      let inputGetEl = document.getElementById("input-name");
+      let submitEl = document.getElementById("submit");
+      let resultEl = document.getElementById("result");
+
+      submitEl.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        let resultGreet = document.createElement("div");
+
+        resultGreet.textContent = `Hello ${inputGetEl.value}, Welcome to CyberDude! 👋 `;
+        resultGreet.className = " my-10  p-3 inline-block  bg-green-200  ";
+
+        resultEl.append(resultGreet);
+      });
+    </script>
+  </body>
+</html>

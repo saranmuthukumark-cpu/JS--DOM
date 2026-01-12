@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM | Background Color Switcher</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body id="body">
+    <nav>
+      <h1 class="text-3xl bg-blue-300 text-center py-4">
+        Background Color Switcher
+      </h1>
+    </nav>
+
+    <main class="mt-10">
+      <div class="flex justify-center gap-5">
+        <button
+          class="border-2 border-green-600 px-1 bg-green-300"
+          id="greenBtn">
+          Green
+        </button>
+        <button class="border-2 border-red-600 px-1 bg-red-300" id="redBtn">
+          Red
+        </button>
+        <button class="border-2 border-gray-600 px-1 bg-gray-300" id="grayBtn">
+          gray
+        </button>
+        <button
+          class="border-2 border-yellow-600 px-1 bg-yellow-300"
+          id="yellowBtn">
+          yellow
+        </button>
+        <button
+          class="border-2 border-purple-600 px-1 bg-purple-300"
+          id="purpleBtn">
+          purple
+        </button>
+        <button
+          class="border-2 border-purple-600 px-1 bg-linear-to-l from-blue-400 to-pink-400"
+          id="randomBtn">
+          random
+        </button>
+      </div>
+    </main>
+
+    <script>
+      let greenBtnEl = document.getElementById("greenBtn");
+
+      let redBtnEl = document.getElementById("redBtn");
+
+      let grayBtnEl = document.getElementById("grayBtn");
+
+      let yellowBtnEl = document.getElementById("yellowBtn");
+
+      let purpleBtnEl = document.getElementById("purpleBtn");
+
+      let randomBtnEl = document.getElementById("randomBtn");
+
+      let bodyEl = document.getElementById("body");
+
+      greenBtnEl.addEventListener("click", () => {
+        bodyEl.className = "bg-green-100";
+      });
+      redBtnEl.addEventListener("click", () => {
+        bodyEl.className = "bg-red-100";
+      });
+      grayBtnEl.addEventListener("click", () => {
+        bodyEl.className = "bg-gray-100";
+      });
+      yellowBtnEl.addEventListener("click", () => {
+        bodyEl.className = "bg-yellow-100";
+      });
+      purpleBtnEl.addEventListener("click", () => {
+        bodyEl.className = "bg-purple-100";
+      });
+
+      randomBtnEl.addEventListener("click", () => {
+        const colour = [
+          "bg-red-300",
+          "bg-green-300",
+          "bg-purple-300",
+          "bg-yellow-300",
+          "bg-blue-300",
+          "bg-orange-300",
+          "bg-pink-300",
+        ];
+
+        let randomColour = Math.floor(Math.random()*7);
+        //console.log(randomColour)
+
+        bodyEl.className = `${colour[randomColour]}`;
+      });
+    </script>
+  </body>
+</html>
