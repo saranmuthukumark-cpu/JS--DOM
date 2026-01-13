@@ -16,41 +16,69 @@
     <nav class="bg-green-300 text-center py-5">
       <h1 class="text-3xl">Greeting Bot 👋</h1>
     </nav>
-    <main class="flex justify-center mt-10 mx-auto">
-      
-      <div class=" flex flex-col">
-        <div>
-          <form action="" class="">
+
+    <main class="" id="main">
+      <div class="">
+        <div class="mt-10 w-[300px] mx-auto" id="formDiv">
+          <form>
             <input
               type="text"
               placeholder="Enter your Name"
               class="border border-green-400 outline-none rounded-sm py-1 bg-white placeholder:text-gray-700 pl-2"
               id="input-name"
               required />
+
             <input
               type="submit"
               class="border bg-green-400 rounded-sm border-green-600 px-1 py-1 outline-none"
-              id="submit" />
+              id="submit"
+              class="ml-5" />
           </form>
         </div>
-        <div id="result" class="  "></div>
       </div>
     </main>
+
+    <div id="result"></div>
 
     <script>
       let inputGetEl = document.getElementById("input-name");
       let submitEl = document.getElementById("submit");
       let resultEl = document.getElementById("result");
+      let mainEl = document.getElementById("main");
+      let formDivEl = document.getElementById("formDiv");
 
       submitEl.addEventListener("click", (event) => {
         event.preventDefault();
 
-        let resultGreet = document.createElement("div");
+        let inputValueEl = inputGetEl.value.trim();
 
-        resultGreet.textContent = `Hello ${inputGetEl.value}, Welcome to CyberDude! 👋 `;
-        resultGreet.className = " my-10  p-3 inline-block  bg-green-200  ";
+        const nameValid = /^[A-Za-z]{2,20}$/;
 
-        resultEl.append(resultGreet);
+        if (nameValid.test(inputValueEl)) {
+          let resultGreet = document.createElement("div");
+          resultGreet.innerHTML = `Hello <span class="font-bold text-blue-700">${inputValueEl}👋</span>, Welcome to CyberDude! <br>
+          <p class="font-semibold">
+       family! We’ve been expecting you.
+    </p>`;
+          resultGreet.className =
+            "mt-40 p-3  bg-green-300 capitalize  text-4xl w-[750px] mx-auto text-center rounded-lg animate-pulse";
+
+          resultEl.append(resultGreet);
+
+          formDivEl.remove();
+        } else {
+          let deleteDiv = document.createElement("div");
+          deleteDiv.innerHTML =
+            "<strong>❌ Invalid Name</strong>—Letters only (2–20 chars)";
+          deleteDiv.className =
+            "text-start mt-3 mb-8 pl-2 bg-red-300 w-[450px] mx-auto rounded-sm border-l-4 border-red-800";
+
+          mainEl.prepend(deleteDiv);
+
+          setTimeout(() => {
+            deleteDiv.remove();
+          }, 3000);
+        }
       });
     </script>
   </body>
